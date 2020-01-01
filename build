@@ -5,3 +5,6 @@ echo "uglify pug.js ... "
 echo "uglify pug.full.js ... "
 ./node_modules/.bin/uglifyjs dist/pug.full.js > dist/pug.full.min.js
 rm -rf ./built
+mkdir -p web/static/assets/lib/pug/
+echo "copy dist files to web..."
+cp dist/* web/static/assets/lib/pug/
