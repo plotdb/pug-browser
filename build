@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-./node_modules/.bin/lsc ./build.ls
-echo "uglify pug.js ... "
-./node_modules/.bin/uglifyjs dist/pug.js > dist/pug.min.js
-echo "uglify pug.full.js ... "
-./node_modules/.bin/uglifyjs dist/pug.full.js > dist/pug.full.min.js
-rm -rf ./built
