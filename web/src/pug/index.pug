@@ -3,7 +3,7 @@ html
   include /../../static/assets/lib/ldui/pug/ldui.pug
   head
     +css("https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css")
-    +css("/assets/lib/ldui/ldui.min.css")
+    +css("assets/lib/ldui/ldui.min.css")
     style(type="text/css"): :stylus
       html,body { width: 100%; height: 100%; padding: 0; margin: 0 }
       textarea { outline: none!important; box-shadow: none!important }
@@ -31,8 +31,8 @@ html
     script: :lsc
       BrowserFS.install window
       BrowserFS.configure {fs: \LocalStorage}, -> window.fs = fs = require("fs")
-    +script("/assets/lib/ldui/ldui.min.js")
-    +script("/assets/lib/pug/pug.min.js")
+    +script("assets/lib/ldui/ldui.min.js")
+    +script("assets/lib/pug/pug.min.js")
     script: :lsc
       pug = require("pug")
       update = ->
