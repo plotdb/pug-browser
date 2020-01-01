@@ -1,6 +1,6 @@
 # pug-browser
 
-Builder for Pug running in Browsers.
+Builder for Pug running in Browsers. [Live Demo](https://plotdb.github.io/pug-browser/)
 
 ## Usage
 
@@ -22,7 +22,7 @@ Client side Pug is useful for purpose like online pug editing and realtime previ
 
 Here is a size statistics of a bundled pug js file, generated with discify from hughsk/disc:
 
-![module size statistics]()
+![module size statistics](https://raw.githubusercontent.com/plotdb/pug-browser/master/index.png)
 
 
 Following are the modules to be blamed for:
