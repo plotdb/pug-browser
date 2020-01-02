@@ -4,6 +4,9 @@ echo "uglify pug.js ... "
 ./node_modules/.bin/uglifyjs dist/pug.js > dist/pug.min.js
 echo "uglify pug.full.js ... "
 ./node_modules/.bin/uglifyjs dist/pug.full.js > dist/pug.full.min.js
+# failed due to const keyword
+#echo "uglify html2pug.js ... "
+#./node_modules/.bin/uglifyjs dist/html2pug.js > dist/html2pug.min.js
 rm -rf ./built
 mkdir -p web/static/assets/lib/pug/
 echo "copy dist files to web..."

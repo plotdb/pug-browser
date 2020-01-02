@@ -10,7 +10,7 @@ execute the following:
     npm install; npm run build
 ```
 
-generated pug file will be available in `dist/` folder.
+Generated pug file will be available in `dist/` folder. Besides Pug, we also bundle html2pug from [this repo](https://github.com/izolate/html2pug).
 
 
 ## Why
@@ -43,6 +43,25 @@ We use browserify to overwrite and replace above modules with following behavior
  * constantinople - always return false for constant testing.
  * with - use language feature `with` directly.
 
+## Sample Usage
+
+Pug:
+```
+    script(src="<path-to-pugjs>")
+    script.
+      pug = require("pug");
+      result_html = pug.render("header: h1.title Hello World!", {filename: "index.pug", basedir: "."});
+```
+
+html2pug:
+
+```
+    script(src="<path-to-html2pugjs>")
+    script.
+      html2pug = require("html2pug");
+      result_pug = html2pug('<header><h1 class="title">Hello World!</h1></header>')
+```
+
 
 ## FileSystem
 
@@ -50,6 +69,7 @@ We don't provide `fs` module for browser but you can use `BrowserFS` for support
 
 ```
     script(src="https://cdnjs.cloudflare.com/ajax/libs/BrowserFS/2.0.0/browserfs.min.js")
+    script(src="<path-to-pugjs>")
     script.
       BrowserFS.install(window)
       BrowserFS.configure({fs: "LocalStorage"}, function() {
@@ -57,8 +77,17 @@ We don't provide `fs` module for browser but you can use `BrowserFS` for support
         fs.writeFileSync("sample.pug", "h1 Hello World!");
       });
       pug = require("pug");
-      result = pug.render("include sample.pug", {filename: "index.pug", basedir: "."});
+      result_html = pug.render("include sample.pug", {filename: "index.pug", basedir: "."});
 ```
+
+## html2pug
+
+Similarly, html2pug is built with following modules excluded:
+
+ * source-map
+ * stream-http
+ * uglify-js
+ * clean-css
 
 
 ## Discussion 

@@ -7,12 +7,17 @@ html
     style(type="text/css"): :stylus
       html,body { width: 100%; height: 100%; padding: 0; margin: 0 }
       textarea { outline: none!important; box-shadow: none!important }
+      iframe { border: none }
   body.p-4
-    .d-flex.flex-column.w-100.h-100
+    .w-1200.rwd.mx-auto.h-100: .d-flex.flex-column.w-100.h-100
       div
-        h2 pug-browser
-        p builder for pug running in browser. quite small ( 170KB ) compared with a full browserified bundle ( 2MB ). Download ( #[a(href="/assets/lib/pug/pug.js") pug.js] / #[a(href="/assets/lib/pug/pug.min.js") pug.min.js] ) or #[a(href="https://github.com/plotdb/pug-browser") clone from Github repo] and build by yourself.
-
+        .d-flex.align-items-center.justify-content-between.mb-3
+          h2.flex-grow-1.mb-0 pug-browser
+          span.mr-1 Download:
+          a.btn.btn-outline-secondary.btn-sm.mr-1(href="assets/lib/pug/pug.js") pug.js
+          a.btn.btn-outline-secondary.btn-sm.mr-1(href="assets/lib/pug/pug.min.js") pug.min.js
+          a.btn.btn-outline-secondary.btn-sm(href="assets/lib/pug/html2pug.js") html2pug.js
+        p builder for pug running in browser. quite small ( 170KB ) compared with a full browserified bundle ( 2MB ). For convinence, we also bundle pug2html in a standalone file ( 332KB ). Download with above buttons or #[a(href="https://github.com/plotdb/pug-browser") clone from Github repo] and build by yourself. Additionally, you can check the discify module size analysis for #[a(href="pug.html") pug] and #[a(href="html2pug.html") html2pug].
 
       .row.h-100.flex-grow-1
         .col-md: textarea.w-100.h-100.form-control.code-block.text-lg(ld="pug").
@@ -25,21 +30,31 @@ html
               h1 hello world
               each i in [1,2,3,4]
                 +para(i).m-4
-        .col-md: textarea.w-100.h-100.form-control.code-block.text-lg(ld="html",readonly)
+        .col-md: .d-flex.flex-column.h-100
+          textarea.w-100.flex-grow-1.form-control.code-block.text-lg(ld="html",readonly,style="height:50%")
+          .flex-grow-1.mt-4(ld="viewer",style="height:50%")
 
     +script("https://cdnjs.cloudflare.com/ajax/libs/BrowserFS/2.0.0/browserfs.min.js")
     script: :lsc
       BrowserFS.install window
       BrowserFS.configure {fs: \LocalStorage}, -> window.fs = fs = require("fs")
     +script("assets/lib/ldui/ldui.min.js")
+    +script("assets/lib/sandbox.js/sandbox.js")
     +script("assets/lib/pug/pug.min.js")
+    +script("assets/lib/html2pug/bundle.js")
     script: :lsc
       pug = require("pug")
+      html2pug = require("html2pug")
       update = ->
         ret = pug.render(view.get(\pug).value, {filename: \index.pug, basedir: '.', pretty: true})
         view.get(\html).value = ret
+        sandbox.load {html: ret}
       view = new ldView do
         root: document
         action: input: pug: update
-        handler: html: ->
+        handler: html: (->), viewer: (->)
+      sandbox = new Sandbox do
+        container: view.get(\viewer), className: "w-100 h-100 shadow rounded"
       update!
+      ret = html2pug '<header><h1 class="title">Hello World!</h1></header>'
+      console.log ret

@@ -1,11 +1,31 @@
-require! <[fs fs-extra LiveScript browserify uglify-js]>
+require! <[fs fs-extra LiveScript browserify disc]>
 
 tinyify = true
 opt = {fullPaths: false}
 lc = {}
 
+pug-cfg = do
+  name: \pug
+  run: (b) ->
+    b.require("pug")
+    b.exclude("fs")
+    b.exclude("uglify-js")
+    b.exclude("clean-css")
+    b.exclude("constantinople")
+    b.exclude("with")
+
+html2pug-cfg = do
+  name: \html2pug
+  run: (b) ->
+    b.require("html2pug")
+    b.exclude("clean-css")
+    b.exclude("source-map")
+    b.exclude("stream-http")
+    b.exclude("uglify-js")
+
 fs-extra.ensure-dir-sync \built
 fs-extra.ensure-dir-sync \dist
+fs-extra.ensure-dir-sync \web/static
 
 lsc = (name) ->
   fs.write-file-sync(
@@ -13,10 +33,18 @@ lsc = (name) ->
     LiveScript.compile(fs.read-file-sync("src/#name.ls")toString!,{bare:true})
   )
 
+stat = (cfg = {}) -> new Promise (res, rej) ->
+  b = browserify {fullPaths: true}
+  cfg.run b
+  b.bundle!
+    .pipe disc!
+    .pipe fs.createWriteStream "web/static/#{cfg.name}.html"
+    .once \close, -> res!
+
 bundle = (cfg = {}) -> new Promise (res, rej) ->
   b = browserify opt
   cfg.run b
-  if tinyify => b.plugin("tinyify")
+  if tinyify and !cfg.notiny => b.plugin("tinyify")
   b.bundle (e, b) ->
     if cfg.name => lc[cfg.name] = b
     res b
@@ -25,15 +53,10 @@ console.log "bundling pug.full..."
 bundle {name: 'pug.full', run: (b) -> b.require("pug") }
   .then ->
     console.log "bundling pug..."
-    bundle do
-      name: \pug
-      run: (b) ->
-        b.require("pug")
-        b.exclude("fs")
-        b.exclude("uglify-js")
-        b.exclude("clean-css")
-        b.exclude("constantinople")
-        b.exclude("with")
+    bundle pug-cfg
+  .then ->
+    console.log "bundling html2pug..."
+    bundle html2pug-cfg
   .then ->
     console.log "bundling dummy uglify-js..."
     lsc \uglify-js
@@ -59,15 +82,18 @@ bundle {name: 'pug.full', run: (b) -> b.require("pug") }
       name: \with
       run: (b) -> b.require("./built/with.js", {expose: "with"})
   .then ->
-    console.log "concat necessary modules..."
+    console.log "discify minimized pug bundle..."
+    stat pug-cfg
+  .then ->
+    console.log "discify minimized html2pug bundle..."
+    stat html2pug-cfg
+  .then ->
+    console.log "concat necessary modules and generate dist files..."
     codes = <[with constantinople uglify-js clean-css pug]>.map -> lc[it]
     code = codes.join('')
     fs.write-file-sync "dist/pug.js", code
     fs.write-file-sync "dist/pug.full.js", lc['pug.full']
-    #console.log "minify pug.js..."
-    #mincode = codes.map(-> uglify-js.minify(it).code).join('')
-    #fs.write-file-sync "pug.min.js", mincode
-    #console.log "minify pug.full.js..."
-    #fs.write-file-sync "pug.full.min.js", uglify-js.minify(lc['pug.full']).code
+    fs.write-file-sync "dist/html2pug.js", lc['html2pug']
+
   .then ->
     console.log "done."
