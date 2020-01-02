@@ -54,7 +54,7 @@ We don't provide `fs` module for browser but you can use `BrowserFS` for support
       BrowserFS.install(window)
       BrowserFS.configure({fs: "LocalStorage"}, function() {
         window.fs = fs = require("fs");
-        fs.write-file-sync("sample.pug", "h1 Hello World!");
+        fs.writeFileSync("sample.pug", "h1 Hello World!");
       });
       pug = require("pug");
       result = pug.render("include sample.pug", {filename: "index.pug", basedir: "."});
@@ -63,7 +63,7 @@ We don't provide `fs` module for browser but you can use `BrowserFS` for support
 
 ## Discussion 
 
-The minimized Pug.js works at least for some simple cases with include, var interpolation, mixin, &attributes and loop ), yet It's more like just an experiment and removing these will possibly cause some major issues like in performance. We need more tests about it before actually using it in production site.
+The minimized Pug.js works at least for some simple cases with include, var interpolation, mixin, &attributes and loop, yet It's more like just an experiment and removing these modules will possibly cause some major issues like in performance. We need more tests about it before actually using it in production site.
 
 Additionally, since constantinople is for optimization, it's possible that we optionally use some nondeterministic algorithms as alternatives instead of including a whole js parser when size is a major concern.
 
