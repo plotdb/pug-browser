@@ -750,7 +750,7 @@ pug_mixins["script"]("assets/lib/sandbox.js/sandbox.js");
 ;pug_debug_line = 43;pug_debug_filename = "src\u002Fpug\u002Findex.pug";
 pug_mixins["script"]("assets/lib/pug/pug.min.js");
 ;pug_debug_line = 44;pug_debug_filename = "src\u002Fpug\u002Findex.pug";
-pug_mixins["script"]("assets/lib/html2pug/bundle.js");
+pug_mixins["script"]("assets/lib/pug/html2pug.js");
 ;pug_debug_line = 45;pug_debug_filename = "src\u002Fpug\u002Findex.pug";
 pug_html = pug_html + "\u003Cscript\u003E";
 ;pug_debug_line = 45;pug_debug_filename = "src\u002Fpug\u002Findex.pug";
