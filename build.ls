@@ -1,4 +1,4 @@
-require! <[fs fs-extra LiveScript browserify disc]>
+require! <[fs fs-extra livescript browserify disc]>
 
 tinyify = true
 opt = {fullPaths: false}
@@ -30,7 +30,7 @@ fs-extra.ensure-dir-sync \web/static
 lsc = (name) ->
   fs.write-file-sync(
     "built/#name.js",
-    LiveScript.compile(fs.read-file-sync("src/#name.ls")toString!,{bare:true})
+    livescript.compile(fs.read-file-sync("src/#name.ls")toString!,{bare:true})
   )
 
 stat = (cfg = {}) -> new Promise (res, rej) ->

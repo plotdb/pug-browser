@@ -14,9 +14,9 @@ html
         .d-flex.align-items-center.justify-content-between.mb-3
           h2.flex-grow-1.mb-0 pug-browser
           span.mr-1 Download:
-          a.btn.btn-outline-secondary.btn-sm.mr-1(href="assets/lib/pug/pug.js") pug.js
-          a.btn.btn-outline-secondary.btn-sm.mr-1(href="assets/lib/pug/pug.min.js") pug.min.js
-          a.btn.btn-outline-secondary.btn-sm(href="assets/lib/pug/html2pug.js") html2pug.js
+          a.btn.btn-outline-secondary.btn-sm.mr-1(href="assets/lib/pug/dev/pug.js") pug.js
+          a.btn.btn-outline-secondary.btn-sm.mr-1(href="assets/lib/pug/dev/pug.min.js") pug.min.js
+          a.btn.btn-outline-secondary.btn-sm(href="assets/lib/pug/dev/html2pug.js") html2pug.js
         p builder for pug running in browser. quite small ( 170KB ) compared with a full browserified bundle ( 2MB ). For convinence, we also bundle html2pug in a standalone file ( 332KB ). Download with above buttons or #[a(href="https://github.com/plotdb/pug-browser") clone from Github repo] and build by yourself. Additionally, you can check the discify module size analysis for #[a(href="pug.html") pug] and #[a(href="html2pug.html") html2pug].
 
       .row.h-100.flex-grow-1
@@ -40,8 +40,8 @@ html
       BrowserFS.configure {fs: \LocalStorage}, -> window.fs = fs = require("fs")
     +script("assets/lib/ldui/ldui.min.js")
     +script("assets/lib/sandbox.js/sandbox.js")
-    +script("assets/lib/pug/pug.min.js")
-    +script("assets/lib/pug/html2pug.js")
+    +script("assets/lib/pug/dev/pug.min.js")
+    +script("assets/lib/pug/dev/html2pug.js")
     script: :lsc
       pug = require("pug")
       html2pug = require("html2pug")

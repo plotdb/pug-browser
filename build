@@ -1,13 +1,16 @@
 #!/usr/bin/env bash
-./node_modules/.bin/lsc ./build.ls
-echo "uglify pug.js ... "
-./node_modules/.bin/uglifyjs dist/pug.js > dist/pug.min.js
-echo "uglify pug.full.js ... "
-./node_modules/.bin/uglifyjs dist/pug.full.js > dist/pug.full.min.js
+rm -rf dist
+mkdir -p dist
+npx lsc ./build.ls
+echo "minify pug.js ... "
+npx terser --compress --mangle -- dist/pug.js > dist/pug.min.js
+echo "minify pug.full.js ... "
+npx terser --compress --mangle -- dist/pug.full.js > dist/pug.full.min.js
 # failed due to const keyword
-#echo "uglify html2pug.js ... "
-#./node_modules/.bin/uglifyjs dist/html2pug.js > dist/html2pug.min.js
+echo "minify html2pug.js ... "
+npx terser --compress --mangle -- dist/html2pug.js > dist/html2pug.min.js
 rm -rf ./built
-mkdir -p web/static/assets/lib/pug/
+rm -rf web/static/assets/lib/pug/dev/
+mkdir -p web/static/assets/lib/pug/dev/
 echo "copy dist files to web..."
-cp dist/* web/static/assets/lib/pug/
+cp dist/* web/static/assets/lib/pug/dev/
