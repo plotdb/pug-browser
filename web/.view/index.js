@@ -670,7 +670,7 @@ pug_html = pug_html + "html2pug.js\u003C\u002Fa\u003E\u003C\u002Fdiv\u003E";
 ;pug_debug_line = 20;pug_debug_filename = "src\u002Fpug\u002Findex.pug";
 pug_html = pug_html + "\u003Cp\u003E";
 ;pug_debug_line = 20;pug_debug_filename = "src\u002Fpug\u002Findex.pug";
-pug_html = pug_html + "builder for pug running in browser. quite small ( 170KB ) compared with a full browserified bundle ( 2MB ). For convinence, we also bundle pug2html in a standalone file ( 332KB ). Download with above buttons or ";
+pug_html = pug_html + "builder for pug running in browser. quite small ( 170KB ) compared with a full browserified bundle ( 2MB ). For convinence, we also bundle html2pug in a standalone file ( 332KB ). Download with above buttons or ";
 ;pug_debug_line = 20;pug_debug_filename = "src\u002Fpug\u002Findex.pug";
 pug_html = pug_html + "\u003Ca href=\"https:\u002F\u002Fgithub.com\u002Fplotdb\u002Fpug-browser\"\u003E";
 ;pug_debug_line = 20;pug_debug_filename = "src\u002Fpug\u002Findex.pug";
