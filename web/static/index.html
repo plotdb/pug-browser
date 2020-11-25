@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"><link rel="stylesheet" type="text/css" href="assets/lib/ldui/ldui.min.css"><style type="text/css">html,
+<!DOCTYPE html><html><head><link rel="stylesheet" type="text/css" href="assets/lib/bootstrap/main/css/bootstrap.min.css"><link rel="stylesheet" type="text/css" href="assets/lib/bootstrap.ldui/main/bootstrap.ldui.min.css"><!--+css("https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css")--><!--+css("assets/lib/ldui/ldui.min.css")--><style type="text/css">html,
 body {
   width: 100%;
   height: 100%;
@@ -20,13 +20,13 @@ html
       p&attributes(attributes) paragraph
     h1 hello world
     each i in [1,2,3,4]
-      +para(i).m-4</textarea></div><div class="col-md"><div class="d-flex flex-column h-100"><textarea class="w-100 flex-grow-1 form-control code-block text-lg" ld="html" readonly style="height:50%"></textarea><div class="flex-grow-1 mt-4" ld="viewer" style="height:50%"></div></div></div></div></div></div><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/BrowserFS/2.0.0/browserfs.min.js"></script><script>BrowserFS.install(window);
+      +para(i).m-4</textarea></div><div class="col-md"><div class="d-flex flex-column h-100"><textarea class="w-100 flex-grow-1 form-control code-block text-lg" ld="html" readonly style="height:50%"></textarea><div class="flex-grow-1 mt-4" ld="viewer" style="height:50%"></div></div></div></div></div></div><script type="text/javascript" src="assets/lib/browserfs/main/browserfs.min.js"></script><script>BrowserFS.install(window);
 BrowserFS.configure({
   fs: 'LocalStorage'
 }, function(){
   var fs;
   return window.fs = fs = require("fs");
-});</script><script type="text/javascript" src="assets/lib/ldui/ldui.min.js"></script><script type="text/javascript" src="assets/lib/sandbox.js/sandbox.js"></script><script type="text/javascript" src="assets/lib/pug/dev/pug.min.js"></script><script type="text/javascript" src="assets/lib/pug/dev/html2pug.js"></script><script>var pug, html2pug, update, view, sandbox, ret;
+});</script><script type="text/javascript" src="assets/lib/@loadingio/ldquery/main/ldq.min.js"></script><script type="text/javascript" src="assets/lib/ldview/main/ldview.min.js"></script><script type="text/javascript" src="assets/lib/sandbox.js/main/sandbox.js"></script><script type="text/javascript" src="assets/lib/pug/dev/pug.min.js"></script><script type="text/javascript" src="assets/lib/pug/dev/html2pug.js"></script><script>var pug, html2pug, update, view, sandbox, ret;
 pug = require("pug");
 html2pug = require("html2pug");
 update = function(){

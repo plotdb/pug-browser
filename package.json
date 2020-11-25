@@ -21,18 +21,35 @@
     "build": "./build"
   },
   "devDependencies": {
+    "@loadingio/ldquery": "^1.1.1",
+    "bootstrap": "^4.5.3",
+    "bootstrap.ldui": "github:loadingio/bootstrap.ldui",
+    "bootstrap.native": "^3.0.14",
+    "browserfs": "^1.4.3",
     "browserify": "^16.5.0",
+    "deploy": "github:zbryikt/deploy",
+    "disc": "^1.3.3",
     "fedep": "0.0.8",
     "fs-extra": "^8.1.0",
     "html2pug": "^4.0.0",
+    "ldview": "0.0.2",
     "livescript": "=1.6.0",
+    "sandbox.js": "github:plotdb/sandbox.js",
     "template": "github:zbryikt/template#v2.1.6",
     "terser": "^5.5.0",
     "tinyify": "^2.5.2",
     "uglify-js": "^3.2.0"
   },
-  "dependencies": {
-    "deploy": "github:zbryikt/deploy",
-    "disc": "^1.3.3"
+  "frontendDependencies": {
+    "root": "web/static/assets/lib",
+    "modules": [
+      "bootstrap",
+      "bootstrap.ldui",
+      "bootstrap.native",
+      "ldview",
+      "@loadingio/ldquery",
+      "browserfs",
+      "sandbox.js"
+    ]
   }
 }
