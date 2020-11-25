@@ -1,6 +1,6 @@
 {
   "author": "zbryikt",
-  "name": "pug-browser",
+  "name": "@plotdb/pug-browser",
   "license": "MIT",
   "description": "Builder for Pug running in browser",
   "version": "0.0.1",
