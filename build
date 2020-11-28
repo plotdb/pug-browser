@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 rm -rf dist
-mkdir -p dist
+mkdir -p dist/require
 npx lsc ./build.ls
 echo "minify pug.js ... "
 npx terser --compress --mangle -- dist/pug.js > dist/pug.min.js
@@ -10,7 +10,7 @@ npx terser --compress --mangle -- dist/pug.full.js > dist/pug.full.min.js
 echo "minify html2pug.js ... "
 npx terser --compress --mangle -- dist/html2pug.js > dist/html2pug.min.js
 rm -rf ./built
-rm -rf web/static/assets/lib/pug/dev/
-mkdir -p web/static/assets/lib/pug/dev/
+rm -rf web/static/assets/lib/pug-browser/dev/
+mkdir -p web/static/assets/lib/pug-browser/dev/
 echo "copy dist files to web..."
-cp dist/* web/static/assets/lib/pug/dev/
+cp -R dist/* web/static/assets/lib/pug-browser/dev/

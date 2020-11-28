@@ -45,11 +45,9 @@ html
     +script("assets/lib/@loadingio/ldquery/main/ldq.min.js")
     +script("assets/lib/ldview/main/ldview.min.js")
     +script("assets/lib/sandbox.js/main/sandbox.js")
-    +script("assets/lib/pug/dev/pug.min.js")
-    +script("assets/lib/pug/dev/html2pug.js")
+    +script("assets/lib/pug-browser/dev/pug.min.js")
+    +script("assets/lib/pug-browser/dev/html2pug.js")
     script: :lsc
-      pug = require("pug")
-      html2pug = require("html2pug")
       update = ->
         ret = pug.render(view.get(\pug).value, {filename: \index.pug, basedir: '.', pretty: true})
         view.get(\html).value = ret

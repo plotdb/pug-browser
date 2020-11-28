@@ -24,7 +24,7 @@ html2pug-cfg = do
     b.exclude("uglify-js")
 
 fs-extra.ensure-dir-sync \built
-fs-extra.ensure-dir-sync \dist
+fs-extra.ensure-dir-sync \dist/require
 fs-extra.ensure-dir-sync \web/static
 
 lsc = (name) ->
@@ -91,9 +91,14 @@ bundle {name: 'pug.full', run: (b) -> b.require("pug") }
     console.log "concat necessary modules and generate dist files..."
     codes = <[with constantinople uglify-js clean-css pug]>.map -> lc[it]
     code = codes.join('')
-    fs.write-file-sync "dist/pug.js", code
-    fs.write-file-sync "dist/pug.full.js", lc['pug.full']
-    fs.write-file-sync "dist/html2pug.js", lc['html2pug']
+
+    # --standalone doesnt work well with browserFs. hacky hardcoded for now
+    fs.write-file-sync "dist/pug.js", code + ";window.pug=require('pug');"
+    fs.write-file-sync "dist/pug.full.js", lc['pug.full'] + ";window.pug=require('pug');"
+    fs.write-file-sync "dist/html2pug.js", lc['html2pug'] + ";window.html2pug=require('html2pug');"
+    fs.write-file-sync "dist/require/pug.js", code
+    fs.write-file-sync "dist/require/pug.full.js", lc['pug.full']
+    fs.write-file-sync "dist/require/html2pug.js", lc['html2pug']
 
   .then ->
     console.log "done."
