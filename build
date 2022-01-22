@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 rm -rf dist
 mkdir -p dist/require
-npx lsc ./build.ls
+./node_modules/.bin/lsc ./build.ls
 echo "minify pug.js ... "
-npx terser --compress --mangle -- dist/pug.js > dist/pug.min.js
+./node_modules/.bin/terser --compress --mangle -- dist/pug.js > dist/pug.min.js
 echo "minify pug.full.js ... "
-npx terser --compress --mangle -- dist/pug.full.js > dist/pug.full.min.js
+./node_modules/.bin/terser --compress --mangle -- dist/pug.full.js > dist/pug.full.min.js
 # failed due to const keyword
 echo "minify html2pug.js ... "
-npx terser --compress --mangle -- dist/html2pug.js > dist/html2pug.min.js
+./node_modules/.bin/terser --compress --mangle -- dist/html2pug.js > dist/html2pug.min.js
 rm -rf ./built
 rm -rf web/static/assets/lib/pug-browser/dev/
 mkdir -p web/static/assets/lib/pug-browser/dev/
