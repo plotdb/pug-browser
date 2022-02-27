@@ -41,7 +41,7 @@
     "detect-browsers": "~2.0.0",
     "dropbox": "~0.10.3",
     "express": "~4.15",
-    "karma": "~1.5",
+    "karma": "~6.3",
     "karma-chrome-launcher": "~2.0",
     "karma-coverage": "~1.1",
     "karma-firefox-launcher": "~1.0",
