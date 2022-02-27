@@ -1,11 +1,12 @@
 doctype html
 html
-  include /../../static/assets/lib/bootstrap.ldui/main/index.pug
+  include @/@loadingio/bootstrap.ext/index.pug
+  include @/ldview/index.pug
   head
-    +css("assets/lib/bootstrap/main/css/bootstrap.min.css")
-    +css("assets/lib/bootstrap.ldui/main/bootstrap.ldui.min.css")
-    //+css("https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css")
-    //+css("assets/lib/ldui/ldui.min.css")
+    +css([
+      {name: "bootstrap", path: "dist/css/bootstrap.min.css"},
+      {name: "@loadingio/bootstrap.ext"}
+    ])
     style(type="text/css"): :stylus
       html,body { width: 100%; height: 100%; padding: 0; margin: 0 }
       textarea { outline: none!important; box-shadow: none!important }
@@ -38,25 +39,27 @@ html
 
     //- 2.0.0 is not on npm. should we keep it here?
     //-+script("https://cdnjs.cloudflare.com/ajax/libs/BrowserFS/2.0.0/browserfs.min.js")
-    +script("assets/lib/browserfs/main/browserfs.min.js")
-    script: :lsc
+    +script("assets/lib/browserfs/main/dist/browserfs.min.js")
+    script(type="module"): :lsc
       BrowserFS.install window
       BrowserFS.configure {fs: \LocalStorage}, -> window.fs = fs = require("fs")
-    +script("assets/lib/@loadingio/ldquery/main/ldq.min.js")
-    +script("assets/lib/ldview/main/ldview.min.js")
-    +script("assets/lib/sandbox.js/main/sandbox.js")
-    +script("assets/lib/pug-browser/dev/pug.min.js")
-    +script("assets/lib/pug-browser/dev/html2pug.js")
-    script: :lsc
+    +script([
+      {name: "@loadingio/ldquery"},
+      {name: "ldview"},
+      {name: "@plotdb/sandbox"},
+      {name: "pug-browser", version: "dev", path: "pug.min.js"},
+      {name: "pug-browser", version: "dev", path: "html2pug.min.js"}
+    ])
+    script(type="module"): :lsc
       update = ->
         ret = pug.render(view.get(\pug).value, {filename: \index.pug, basedir: '.', pretty: true})
         view.get(\html).value = ret
-        sandbox.load {html: ret}
+        sbox.load {html: ret}
       view = new ldView do
         root: document
         action: input: pug: update
         handler: html: (->), viewer: (->)
-      sandbox = new Sandbox do
+      sbox = new sandbox do
         container: view.get(\viewer), className: "w-100 h-100 shadow rounded"
       update!
       ret = html2pug '<header><h1 class="title">Hello World!</h1></header>'

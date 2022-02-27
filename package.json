@@ -17,40 +17,40 @@
     "npm": ">=6.4.1"
   },
   "scripts": {
-    "start": "npx server -r web",
+    "start": "./node_modules/.bin/server -r web -o true",
     "build": "./build"
   },
   "devDependencies": {
-    "@loadingio/ldquery": "^1.1.1",
+    "@loadingio/ldquery": "^3.0.2",
     "aliasify": "^2.1.0",
     "bootstrap": "^4.5.3",
-    "bootstrap.ldui": "github:loadingio/bootstrap.ldui",
+    "@loadingio/bootstrap.ext": "^0.0.6",
     "bootstrap.native": "^3.0.14",
     "browserfs": "^1.4.3",
     "browserify": "^16.5.0",
     "deploy": "github:zbryikt/deploy",
     "disc": "^1.3.3",
-    "fedep": "0.0.8",
+    "fedep": "^1.1.7",
     "fs-extra": "^8.1.0",
     "html2pug": "^4.0.0",
-    "ldview": "0.0.2",
-    "livescript": "=1.6.0",
-    "sandbox.js": "github:plotdb/sandbox.js",
-    "template": "github:zbryikt/template#v2.1.6",
+    "ldview": "1.1.1",
+    "livescript": "^1.6.0",
+    "@plotdb/sandbox": "^0.0.2",
+    "@zbryikt/template": "^2.3.34",
     "terser": "^5.5.0",
     "tinyify": "^2.5.2",
-    "uglify-js": "^3.2.0"
+    "uglify-js": "^3.13.1"
   },
   "frontendDependencies": {
     "root": "web/static/assets/lib",
     "modules": [
       "bootstrap",
-      "bootstrap.ldui",
+      "@loadingio/bootstrap.ext",
       "bootstrap.native",
       "ldview",
       "@loadingio/ldquery",
       "browserfs",
-      "sandbox.js"
+      "@plotdb/sandbox"
     ]
   }
 }

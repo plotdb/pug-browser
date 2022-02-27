@@ -1,18 +1,4 @@
-<!DOCTYPE html><html><head><link rel="stylesheet" type="text/css" href="assets/lib/bootstrap/main/css/bootstrap.min.css"><link rel="stylesheet" type="text/css" href="assets/lib/bootstrap.ldui/main/bootstrap.ldui.min.css"><!--+css("https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css")--><!--+css("assets/lib/ldui/ldui.min.css")--><style type="text/css">html,
-body {
-  width: 100%;
-  height: 100%;
-  padding: 0;
-  margin: 0;
-}
-textarea {
-  outline: none !important;
-  box-shadow: none !important;
-}
-iframe {
-  border: none;
-}
-</style></head><body class="p-4"><div class="w-1200 rwd mx-auto h-100"><div class="d-flex flex-column w-100 h-100"><div><div class="d-flex align-items-center justify-content-between mb-3"><h2 class="flex-grow-1 mb-0">pug-browser</h2><span class="mr-1">Download:</span><a class="btn btn-outline-secondary btn-sm mr-1" href="assets/lib/pug/dev/pug.js">pug.js</a><a class="btn btn-outline-secondary btn-sm mr-1" href="assets/lib/pug/dev/pug.min.js">pug.min.js</a><a class="btn btn-outline-secondary btn-sm" href="assets/lib/pug/dev/html2pug.js">html2pug.js</a></div><p>builder for pug running in browser. quite small ( 170KB ) compared with a full browserified bundle ( 2MB ). For convinence, we also bundle html2pug in a standalone file ( 332KB ). Download with above buttons or <a href="https://github.com/plotdb/pug-browser">clone from Github repo</a> and build by yourself. Additionally, you can check the discify module size analysis for <a href="pug.html">pug</a> and <a href="html2pug.html">html2pug</a>.</p></div><div class="row h-100 flex-grow-1"><div class="col-md"><textarea class="w-100 h-100 form-control code-block text-lg" ld="pug">doctype html
+<!DOCTYPE html><html><head><link rel="stylesheet" type="text/css" href="/assets/lib/bootstrap/main/dist/css/bootstrap.min.css"><link rel="stylesheet" type="text/css" href="/assets/lib/@loadingio/bootstrap.ext/main/index.min.css"><style type="text/css">html,body{width:100%;height:100%;padding:0;margin:0}textarea{outline:none !important;box-shadow:none !important}iframe{border:0}</style></head><body class="p-4"><div class="w-1200 rwd mx-auto h-100"><div class="d-flex flex-column w-100 h-100"><div><div class="d-flex align-items-center justify-content-between mb-3"><h2 class="flex-grow-1 mb-0">pug-browser</h2><span class="mr-1">Download:</span><a class="btn btn-outline-secondary btn-sm mr-1" href="assets/lib/pug/dev/pug.js">pug.js</a><a class="btn btn-outline-secondary btn-sm mr-1" href="assets/lib/pug/dev/pug.min.js">pug.min.js</a><a class="btn btn-outline-secondary btn-sm" href="assets/lib/pug/dev/html2pug.js">html2pug.js</a></div><p>builder for pug running in browser. quite small ( 170KB ) compared with a full browserified bundle ( 2MB ). For convinence, we also bundle html2pug in a standalone file ( 332KB ). Download with above buttons or <a href="https://github.com/plotdb/pug-browser">clone from Github repo</a> and build by yourself. Additionally, you can check the discify module size analysis for <a href="pug.html">pug</a> and <a href="html2pug.html">html2pug</a>.</p></div><div class="row h-100 flex-grow-1"><div class="col-md"><textarea class="w-100 h-100 form-control code-block text-lg" ld="pug">doctype html
 html
   head
   body
@@ -20,41 +6,4 @@ html
       p&attributes(attributes) paragraph
     h1 hello world
     each i in [1,2,3,4]
-      +para(i).m-4</textarea></div><div class="col-md"><div class="d-flex flex-column h-100"><textarea class="w-100 flex-grow-1 form-control code-block text-lg" ld="html" readonly style="height:50%"></textarea><div class="flex-grow-1 mt-4" ld="viewer" style="height:50%"></div></div></div></div></div></div><script type="text/javascript" src="assets/lib/browserfs/main/browserfs.min.js"></script><script>BrowserFS.install(window);
-BrowserFS.configure({
-  fs: 'LocalStorage'
-}, function(){
-  var fs;
-  return window.fs = fs = require("fs");
-});</script><script type="text/javascript" src="assets/lib/@loadingio/ldquery/main/ldq.min.js"></script><script type="text/javascript" src="assets/lib/ldview/main/ldview.min.js"></script><script type="text/javascript" src="assets/lib/sandbox.js/main/sandbox.js"></script><script type="text/javascript" src="assets/lib/pug-browser/dev/pug.min.js"></script><script type="text/javascript" src="assets/lib/pug-browser/dev/html2pug.js"></script><script>var update, view, sandbox, ret;
-update = function(){
-  var ret;
-  ret = pug.render(view.get('pug').value, {
-    filename: 'index.pug',
-    basedir: '.',
-    pretty: true
-  });
-  view.get('html').value = ret;
-  return sandbox.load({
-    html: ret
-  });
-};
-view = new ldView({
-  root: document,
-  action: {
-    input: {
-      pug: update
-    }
-  },
-  handler: {
-    html: function(){},
-    viewer: function(){}
-  }
-});
-sandbox = new Sandbox({
-  container: view.get('viewer'),
-  className: "w-100 h-100 shadow rounded"
-});
-update();
-ret = html2pug('<header><h1 class="title">Hello World!</h1></header>');
-console.log(ret);</script></body></html>
+      +para(i).m-4</textarea></div><div class="col-md"><div class="d-flex flex-column h-100"><textarea class="w-100 flex-grow-1 form-control code-block text-lg" ld="html" readonly style="height:50%"></textarea><div class="flex-grow-1 mt-4" ld="viewer" style="height:50%"></div></div></div></div></div></div><script type="text/javascript" src="assets/lib/browserfs/main/dist/browserfs.min.js" defer></script><script type="module">BrowserFS.install(window);BrowserFS.configure({fs:"LocalStorage"},function(){var r;return window.fs=r=require("fs")});</script><script type="text/javascript" src="/assets/lib/@loadingio/ldquery/main/index.min.js" defer></script><script type="text/javascript" src="/assets/lib/ldview/main/index.min.js" defer></script><script type="text/javascript" src="/assets/lib/@plotdb/sandbox/main/index.min.js" defer></script><script type="text/javascript" src="/assets/lib/pug-browser/dev/pug.min.js" defer></script><script type="text/javascript" src="/assets/lib/pug-browser/dev/html2pug.min.js" defer></script><script type="module">var update,view,sbox,ret;update=function(){var e;e=pug.render(view.get("pug").value,{filename:"index.pug",basedir:".",pretty:true});view.get("html").value=e;return sbox.load({html:e})};view=new ldView({root:document,action:{input:{pug:update}},handler:{html:function(){},viewer:function(){}}});sbox=new sandbox({container:view.get("viewer"),className:"w-100 h-100 shadow rounded"});update();ret=html2pug('<header><h1 class="title">Hello World!</h1></header>');console.log(ret);</script></body></html>
