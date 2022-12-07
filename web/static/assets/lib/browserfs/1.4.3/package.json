@@ -40,7 +40,7 @@
     "buffer": "^5.0.7",
     "detect-browsers": "~2.0.0",
     "dropbox": "~0.10.3",
-    "express": "~4.15",
+    "express": "~4.17",
     "karma": "~1.5",
     "karma-chrome-launcher": "~2.0",
     "karma-coverage": "~1.1",
